@@ -1,0 +1,57 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "cuong1",
+    "password": "cuong"
+}
+
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "cuong",
+    "password": "cuong"
+}
+
+
+###
+
+
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjRiY2YyMTk3MmIwNDU0NGU3Nzg0NjYiLCJpYXQiOjE2NTI4OTAwODF9.CAUogJYqm0DLzSbeZpW0ToXO9905bHQ7c6tAdUdJ5GQ
+
+{
+    "title": "React Tutorial",
+    "description": "top one dev frent-end",
+    "url":"react.com",
+    "status": "LEARNING"
+}
+
+
+### 
+
+GET http://localhost:5000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjRiY2YyMTk3MmIwNDU0NGU3Nzg0NjYiLCJpYXQiOjE2NTI4OTAwODF9.CAUogJYqm0DLzSbeZpW0ToXO9905bHQ7c6tAdUdJ5GQ
+
+###
+
+PUT http://localhost:5000/api/posts/624bf6b51a3533c4213194a7
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjRiY2YyMTk3MmIwNDU0NGU3Nzg0NjYiLCJpYXQiOjE2NTI4OTAwODF9.CAUogJYqm0DLzSbeZpW0ToXO9905bHQ7c6tAdUdJ5GQ
+
+{
+    "title": "JAVA",
+    "description": "JAVA Tutorial",
+    "url": "https://java.com",
+    "status": "LEARNING"
+}
+
+###
+
+DELETE http://localhost:5000/api/posts/624c008336de01a3642f0233
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjRiY2YyMTk3MmIwNDU0NGU3Nzg0NjYiLCJpYXQiOjE2NTI4OTAwODF9.CAUogJYqm0DLzSbeZpW0ToXO9905bHQ7c6tAdUdJ5GQ
