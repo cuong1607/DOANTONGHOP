@@ -1,0 +1,9 @@
+.tab-button-container{
+    display: flex;
+  }
+  .editor-container{
+    padding-top: 4%;
+  }
+  .CodeMirror-scroll, .CodeMirror-sizer, .CodeMirror-gutter, .CodeMirror-gutters, .CodeMirror-linenumber {
+    text-align: left;
+  }
