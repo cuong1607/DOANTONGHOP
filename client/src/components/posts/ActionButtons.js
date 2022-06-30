@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button'
 import playIcon from '../../assets/play-btn.svg'
 import editIcon from '../../assets/pencil.svg'
 import deleteIcon from '../../assets/trash.svg'
+import addIcon from '../../assets/addcomment.svg'
 import { PostContext } from '../../contexts/PostContext'
 import { useContext, useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
@@ -10,10 +11,11 @@ import TextEditor from '../layout/TextEditor'
 
 const ActionButtons = ({ url, _id }) => {
 	const [show, setShow] = useState(false)
+	const [play, setPlay] = useState(true)
 	const { deletePost, findPost, setShowUpdatePostModal } = useContext(
 		PostContext
 	)
-	
+
 	const choosePost = postId => {
 		findPost(postId)
 		setShowUpdatePostModal(true)
@@ -21,9 +23,11 @@ const ActionButtons = ({ url, _id }) => {
 	const onClickPlay = () => {
 		setShow(true)
 	}
+	const onClickAddComment = () => {
+		setPlay(!play)
+	}
 	const idvideo = url.indexOf("=")
 	const urlID = url.substring(idvideo + 1, idvideo + 12)
-	console.log("abc", urlID)
 	return (
 		<>
 			<Button className='post-button' target='_blank' onClick={() => onClickPlay()}>
@@ -36,14 +40,25 @@ const ActionButtons = ({ url, _id }) => {
 			<Button className='post-button' onClick={deletePost.bind(this, _id)}>
 				<img src={deleteIcon} alt='delete' width='24' height='24' />
 			</Button>
-			<Modal className='modal_block' size='xl' show={show} onHide={() => setShow(false)}>
+			<Modal style={{ margin: "0" }} className='modal_block' size='xl' show={show} onHide={() => setShow(false)}>
 				<Modal.Header closeButton>
-					<Modal.Title>Thông tin bài học</Modal.Title>
+					<Modal.Title>
+						<div className='title-modal'>
+							Thông tin bài học
+							<Button className='post-button' onClick={() => onClickAddComment()}>
+								<img src={addIcon} alt='delete' width='24' height='24' />
+							</Button>
+						</div>
+					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<div className='block-youtube'>
-						<iframe allowfullscreen={true} width='60%' height='100%' src={`https://youtube.com/embed/${urlID}`} title="abc" ></iframe>
-						<TextEditor />
+						<div className='iframe-youtube'>
+							<iframe allowfullscreen={true} height="100%" width="100%" src={`https://youtube.com/embed/${urlID}`} title="abc" ></iframe>
+						</div>
+						<div hidden={play}>
+							<TextEditor />
+						</div>
 					</div>
 				</Modal.Body>
 			</Modal>

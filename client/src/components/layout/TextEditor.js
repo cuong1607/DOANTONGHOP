@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import Button from "../text/Button";
 import Editor from "../text/Edittor"; 
 import "./text-editor.css"
+import cancel from '../../assets/cancel.svg'
 function TextEditor() {
   const [openedEditor, setOpenedEditor] = useState("html");
   const [activeButton, setActiveButton] = useState("html");
-
+  const [display, setDisplay] = useState("")
   const [html, setHtml] = useState("");
   const [css, setCss] = useState("");
   const [js, setJs] = useState("");
@@ -32,9 +33,12 @@ function TextEditor() {
     return () => clearTimeout(timeOut);
   }, [html, css, js]);
 
+
   return (
-    <div className="App">
-      <p>Welcome to the edior</p>
+    <div className="App" >
+      <div>
+        <p>Chào mừng</p>
+      </div>
       <div className="tab-button-container">
         <Button
           backgroundColor={activeButton === "html" ? "blue" : ""}
@@ -82,7 +86,7 @@ function TextEditor() {
           />
         )}
       </div>
-      <div>
+      <div style={{height:"100px"}}>
         <iframe
           id="my_iframe"
           srcDoc={srcDoc}
